@@ -1,4 +1,4 @@
-package comwsd.entities;
+package comwsd.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="customers")
-public class Customers {
+public class Customer {
 
 	@Id
 	@GeneratedValue
@@ -24,7 +24,7 @@ public class Customers {
 	
 	private int phone;
 	
-	private Customers() {
+	private Customer() {
 		
 	}
 
@@ -65,6 +65,15 @@ public class Customers {
 	}
 
 	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
+	public Customer(int id, String firstName, String lastName, String email, int phone) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
 		this.phone = phone;
 	}
 

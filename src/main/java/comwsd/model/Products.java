@@ -1,4 +1,4 @@
-package comwsd.entities;
+package comwsd.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
