@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import comwsd.entities.Customers;
+import comwsd.entities.Products;
 import comwsd.repository.CustomersRepository;
+import comwsd.repository.ProductsRepository;
 
 
 @Controller
@@ -16,12 +18,13 @@ public class HomeController {
 	
 	@Autowired
 	CustomersRepository customerRepo;
+	
+	@Autowired
+	ProductsRepository productRepo;
 
 
 	@RequestMapping("/")
 	public String index(Model model){
-		//model.addAttribute("pagetitle", "Próba");
-		model.addAttribute("customers", getCustomer());
 		return "index";
 	} 
 	
@@ -31,8 +34,21 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/productRegister")
-	public String product(){
+	public String product(Model model){
+		//model.addAttribute("productRegister", model)
 		return "productRegister";
+	}
+	
+	@RequestMapping("/customersData")
+	public String customersData(Model model){
+		model.addAttribute("customers", getCustomer());
+		return "customersData";
+	}
+	
+	@RequestMapping("/productsData")
+	public String productsData(Model model){
+		model.addAttribute("products", getProduct());
+		return "productsData";
 	}
 	
 	
@@ -41,4 +57,15 @@ public class HomeController {
 		
 		return customers;
 	}
+	
+	private List<Products> getProduct(){
+		List<Products> products = productRepo.findAll();
+		
+		return products;
+	}
+	
+	
+	
+	
+	
 }

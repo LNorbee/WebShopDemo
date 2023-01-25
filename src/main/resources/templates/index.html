@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th=http://www.thymeleaf.org
-      xmlns:sec=http://www.thymeleaf.org/extras/spring-security
-      xmlns:shiro=http://www.pollix.at/thymeleaf/shiro>
+<html lang="en" xmlns:th=http://www.thymeleaf.org xmlns:sec=http://www.thymeleaf.org/extras/spring-security
+	xmlns:shiro=http://www.pollix.at/thymeleaf/shiro>
 
 <head>
 	<meta charset="utf-8">
@@ -17,46 +16,23 @@
 	<div class="container my-2">
 		<div class="card">
 			<div class="card-body">
-				<div class="container my-5">
+				<div th:switch="${customers}" class="container my-5">
 					<p class="my-5">
-						<a href="/edit" class="btn btn-primary">
-							<i class="fas fa-user-plus ml-2"> Add Customer </i></a>
+						<a href="/--" class="btn btn-primary">
+							<i class="fas ml-2"> Adott vásárló kilistázása </i></a>
 					</p>
-					<div class="col-md-10">
-						<h2>No record found!</h2>
-						<div>
-							<table class="table table-striped table-responsive-md">
-								<thead>
-									<tr>
-										<th>First Name</th>
-										<th>Last Name</th>
-										<th>Email</th>
-										<th>Phone Number</th>
-										<th>Edit</th>
-										<th>Delete</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="customer : ${customers}">
-										<td th:text="${customer.firstName}"></td>
-										<td th:text="${customer.lastName}"></td>
-										<td th:text="${customer.email}"></td>
-										<td th:text="${customer.phone}"></td>
-										<td>
-											<a th:href="@{/edit/{id}(id=${customer.id})}" class="btn btn-primary">
-												<i class="fas fa-user-edit ml-2"></i>
-											</a>
-										</td>
-										<td>
-											<a th:href="@{/delete/{id}(id=${customer.id})}" class="btn btn-primary">
-												<i class="fas fa-user-times ml-2"></i>
-											</a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
+					<p class="my-5">
+						<a href="/customersData" class="btn btn-primary">
+							<i class="fas ml-2"> Összes vásárló kilistázása </i></a>
+					</p>
+					<p class="my-5">
+						<a href="/--" class="btn btn-primary">
+							<i class="fas ml-2"> Adott termék kilistázása </i></a>
+					</p>
+					<p class="my-5">
+						<a href="/productsData" class="btn btn-primary">
+							<i class="fas ml-2"> Összes termék kilistázása </i></a>
+					</p>
 				</div>
 			</div>
 		</div>
