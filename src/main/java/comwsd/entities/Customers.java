@@ -8,56 +8,69 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="customers")
-public class Customer {
+public class Customers {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
-	@Column(name="firstName")
+	@Column(name="first_Name")
 	private String firstName;
 	
-	@Column(name="lastName")
+	@Column(name="last_Name")
 	private String lastName;
 	
-	@Column(name="email")
 	private String email;
 	
-	@Column(name="phone")
 	private int phone;
 	
-	private Customer() {
+	private Customers() {
 		
 	}
-	
-	public int getId() {
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public int getPhone() {
 		return phone;
 	}
+
 	public void setPhone(int phone) {
 		this.phone = phone;
+	}
+
+	@Override
+	public String toString() {
+		return "Customers [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", phone=" + phone + "]";
 	}
 }
