@@ -14,14 +14,13 @@
 
 <body>
 	<div class="container my-2">
+		<h2>Vásárlók</h2>
 		<div class="card">
 			<div class="card-body">
 				<div th:switch="${customers}" class="container my-5">
 					<p class="my-5">
 						<a href="/customerRegister" class="btn btn-primary">
 							<i class="fas ml-2"> Vásárló hozzáadása </i></a>
-						<a href="/" class="btn btn-primary">
-							<i class="fas ml-2"> Főoldal </i></a>
 					</p>
 					<div class="col-md-10">
 						<h2 th:case="null">Nem található vásárló!</h2>
@@ -29,30 +28,56 @@
 							<table class="table table-striped table-responsive-md">
 								<thead>
 									<tr>
+										<th>Id</th>
 										<th>Vezetéknév</th>
 										<th>Keresztnév</th>
 										<th>Email</th>
 										<th>Telefonszám</th>
-										<th>Szerkesztés</th>
-										<th>Törlés</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr th:each="customer : ${customers}">
+										<td th:text="${customer.id}"></td>
 										<td th:text="${customer.lastName}"></td>
 										<td th:text="${customer.firstName}"></td>
 										<td th:text="${customer.email}"></td>
 										<td th:text="${customer.phone}"></td>
-										<td>
-											<a th:href="@{/edit/{id}(id=${customer.id})}" class="btn btn-primary">
-												<i class="fas fa-user-edit ml-2"></i>
-											</a>
-										</td>
-										<td>
-											<a th:href="@{/delete/{id}(id=${customer.id})}" class="btn btn-primary">
-												<i class="fas fa-user-times ml-2"></i>
-											</a>
-										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container my-2">
+		<h2>Termékek</h2>
+		<div class="card">
+			<div class="card-body">
+				<div th:switch="${products}" class="container my-5">
+					<p class="my-5">
+						<a href="/productRegister" class="btn btn-primary">
+							<i class="fas ml-2"> Termék hozzáadása </i></a>
+					</p>
+					<div class="col-md-10">
+						<h2 th:case="null">Nem található termék!</h2>
+						<div>
+							<table class="table table-striped table-responsive-md">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Terméknév</th>
+										<th>Típus</th>
+										<th>Ár</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="product : ${products}">
+										<td th:text="${product.id}"></td>
+										<td th:text="${product.productName}"></td>
+										<td th:text="${product.type}"></td>
+										<td th:text="${product.price}"></td>
 									</tr>
 								</tbody>
 							</table>

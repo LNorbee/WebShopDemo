@@ -15,19 +15,19 @@ public class CustomerService {
 	@Autowired
 	private CustomerRepository customerRepo;
 	
-	public List<Customer> listAll(){
+	public List<Customer> listAllCustomer(){
 		return customerRepo.findAll();
 	}
 	
-	public void save(Customer customer) {
+	public void saveCustomer(Customer customer) {
 		customerRepo.save(customer);
 	}
 	
-	public Customer get(Integer id) {
+	public Customer getCustomer(Integer id) {
 		return customerRepo.findById(id).get();
 	}
 	
-	public void delete(Integer id) {
+	public void deleteCustomer(Integer id) {
 		customerRepo.deleteById(id);
 	}
 }

@@ -1,14 +1,12 @@
 package comwsd.repository;
 
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import comwsd.model.Products;
+import comwsd.model.Product;
 
 @Repository
-public interface ProductRepository extends CrudRepository<Products, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-	List<Products> findAll();
 }
