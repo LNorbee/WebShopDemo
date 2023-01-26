@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import comwsd.model.Customer;
+import comwsd.model.Customers;
 import comwsd.service.CustomerService;
 
 @RestController
@@ -25,20 +25,20 @@ public class CustomersController {
 	
 	//Vissza adja az összes Customer-t a Customers táblából
 	@GetMapping(value = "/customers")
-	public List<Customer> listCustomer(){
+	public List<Customers> listCustomer(){
 		return customerService.listAllCustomer();
 	}
 	
 	//id alapján adja vissza a Customer-t
 	@GetMapping(value = "/customers/{id}")
-	public ResponseEntity<Customer> getCustomer(@PathVariable Integer id){
-		Customer customer = customerService.getCustomer(id);
-		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
+	public ResponseEntity<Customers> getCustomer(@PathVariable Integer id){
+		Customers customer = customerService.getCustomer(id);
+		return new ResponseEntity<Customers>(customer, HttpStatus.OK);
 	}
 	
 	//új Customer-t adunk hozzá
 	@PostMapping(value = "/customers")
-	public void addCustomer(@RequestBody Customer customer) {
+	public void addCustomer(@RequestBody Customers customer) {
 		customerService.saveCustomer(customer);
 	}
 }

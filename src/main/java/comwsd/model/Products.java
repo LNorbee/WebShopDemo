@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Products {
 
 	@Id
 	@GeneratedValue
@@ -21,7 +21,7 @@ public class Product {
 	
 	private int price;
 	
-	private Product() {
+	public Products() {
 		
 	}
 
@@ -57,7 +57,7 @@ public class Product {
 		this.price = price;
 	}
 	
-	public Product(int id, String productName, String type, int price) {
+	public Products(int id, String productName, String type, int price) {
 		super();
 		this.id = id;
 		this.productName = productName;

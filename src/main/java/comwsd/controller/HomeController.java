@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import comwsd.model.Customer;
-import comwsd.model.Product;
+import comwsd.model.Customers;
+import comwsd.model.Orders;
+import comwsd.model.Products;
 import comwsd.repository.CustomerRepository;
+import comwsd.repository.OrderRepository;
 import comwsd.repository.ProductRepository;
 
 @Controller
@@ -20,12 +22,15 @@ public class HomeController {
 
 	@Autowired
 	ProductRepository productRepo;
-
+	
+	@Autowired
+	OrderRepository orderRepo;
 
 	@RequestMapping("/")
 	public String index(Model model){
 		model.addAttribute("customers", getCustomer());
 		model.addAttribute("products", getProduct());
+		model.addAttribute("orders", getOrder());
 		return "index";
 	} 
 
@@ -36,37 +41,29 @@ public class HomeController {
 	
 	@RequestMapping("/productRegister")
 	public String product(Model model){
-		//model.addAttribute("productRegister", model)
 		return "productRegister";
 	}
 	
-	@RequestMapping("/customersData")
-	public String customersData(Model model){
-		model.addAttribute("customers", getCustomer());
-		return "customersData";
+	@RequestMapping("/orders")
+	public String order(Model model) {
+		return "orders";
 	}
 
-	@RequestMapping("/productsData")
-	public String productsData(Model model){
-		model.addAttribute("products", getProduct());
-		return "productsData";
-	}
-
-
-	private List<Customer> getCustomer(){
-		List<Customer> customers = customerRepo.findAll();
+	private List<Customers> getCustomer(){
+		List<Customers> customers = customerRepo.findAll();
 
 		return customers;
 	}
 
-	private List<Product> getProduct(){
-		List<Product> products = productRepo.findAll();
+	private List<Products> getProduct(){
+		List<Products> products = productRepo.findAll();
 
 		return products;
 	}
-
-
-
-
-
+	
+	private List<Orders> getOrder(){
+		List<Orders> orders = orderRepo.findAll();
+		
+		return orders;
+	}
 }

@@ -3,7 +3,7 @@ package comwsd.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import comwsd.model.Product;
+import comwsd.model.Products;
 import comwsd.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 
@@ -16,15 +16,15 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepo;
 
-	public List<Product> listAllProduct(){
+	public List<Products> listAllProduct(){
 		return productRepo.findAll();
 	}
 	
-	public void saveProduct(Product product) {
+	public void saveProduct(Products product) {
 		productRepo.save(product);
 	}
 	
-	public Product getProduct(Integer id) {
+	public Products getProduct(Integer id) {
 		return productRepo.findById(id).get();
 	}
 	

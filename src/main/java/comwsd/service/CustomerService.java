@@ -3,7 +3,7 @@ package comwsd.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import comwsd.model.Customer;
+import comwsd.model.Customers;
 import comwsd.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
@@ -15,15 +15,15 @@ public class CustomerService {
 	@Autowired
 	private CustomerRepository customerRepo;
 	
-	public List<Customer> listAllCustomer(){
+	public List<Customers> listAllCustomer(){
 		return customerRepo.findAll();
 	}
 	
-	public void saveCustomer(Customer customer) {
-		customerRepo.save(customer);
+	public void saveCustomer(Customers newCustomer) {
+		customerRepo.save(newCustomer);
 	}
 	
-	public Customer getCustomer(Integer id) {
+	public Customers getCustomer(Integer id) {
 		return customerRepo.findById(id).get();
 	}
 	

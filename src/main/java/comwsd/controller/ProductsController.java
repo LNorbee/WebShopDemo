@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import comwsd.model.Product;
+import comwsd.model.Products;
 import comwsd.service.ProductService;
 
 @RestController
-public class ProductController {
+public class ProductsController {
 
 	@Autowired
 	private ProductService productService;
@@ -25,21 +25,21 @@ public class ProductController {
 	
 	// Meglévő termékeket kilistázza
 	@GetMapping(value = "/products")
-	public List<Product> listProduct(){
+	public List<Products> listProduct(){
 		return productService.listAllProduct();
 	}
 	
 	// Meglévő terméket kilistázza id alapján
 	@GetMapping(value = "/products/{id}")
-	public ResponseEntity<Product> getProduct(@PathVariable Integer id){
-		Product product = productService.getProduct(id);
+	public ResponseEntity<Products> getProduct(@PathVariable Integer id){
+		Products product = productService.getProduct(id);
 		
-		return new ResponseEntity<Product>(product, HttpStatus.OK);
+		return new ResponseEntity<Products>(product, HttpStatus.OK);
 	}
 	
 	// Terméket ad hozzá a products táblához
 	@PostMapping(value = "/products")
-	public void addProduct(@RequestBody Product newProduct) {
+	public void addProduct(@RequestBody Products newProduct) {
 		productService.saveProduct(newProduct);
 	}
 }

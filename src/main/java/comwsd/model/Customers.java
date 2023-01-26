@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="customers")
-public class Customer {
+public class Customers {
 
 	@Id
 	@GeneratedValue
@@ -24,7 +24,7 @@ public class Customer {
 	
 	private int phone;
 	
-	private Customer() {
+	public Customers() {
 		
 	}
 
@@ -68,7 +68,7 @@ public class Customer {
 		this.phone = phone;
 	}
 
-	public Customer(int id, String firstName, String lastName, String email, int phone) {
+	public Customers(int id, String firstName, String lastName, String email, int phone) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
