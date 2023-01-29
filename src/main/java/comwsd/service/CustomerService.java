@@ -19,8 +19,8 @@ public class CustomerService {
 		return customerRepo.findAll();
 	}
 	
-	public void saveCustomer(Customers newCustomer) {
-		customerRepo.save(newCustomer);
+	public void save(Customers customer) {
+		customerRepo.save(customer);
 	}
 	
 	public Customers getCustomer(Integer id) {

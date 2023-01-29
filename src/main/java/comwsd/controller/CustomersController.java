@@ -1,11 +1,14 @@
 package comwsd.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +32,13 @@ public class CustomersController {
 		return customerService.listAllCustomer();
 	}
 	
+//	@GetMapping(value = "/customers")
+//	public List<Customers> listCustomer(){
+//		List<Customers> customers = new ArrayList<>();
+//		customers.add(new Customers("Abra", "Kadabra", "ak@mail.com", 007));
+//		return customers;
+//	}
+	
 	//id alapján adja vissza a Customer-t
 	@GetMapping(value = "/customers/{id}")
 	public ResponseEntity<Customers> getCustomer(@PathVariable Integer id){
@@ -39,6 +49,6 @@ public class CustomersController {
 	//új Customer-t adunk hozzá
 	@PostMapping(value = "/customers")
 	public void addCustomer(@RequestBody Customers customer) {
-		customerService.saveCustomer(customer);
-	}
+		customerService.save(customer);
+	}	
 }

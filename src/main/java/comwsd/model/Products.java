@@ -3,6 +3,7 @@ package comwsd.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,7 +12,7 @@ import jakarta.persistence.Table;
 public class Products {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name = "product_Name")
@@ -57,9 +58,8 @@ public class Products {
 		this.price = price;
 	}
 	
-	public Products(int id, String productName, String type, int price) {
+	public Products(String productName, String type, int price) {
 		super();
-		this.id = id;
 		this.productName = productName;
 		this.type = type;
 		this.price = price;

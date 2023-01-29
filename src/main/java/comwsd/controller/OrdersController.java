@@ -16,7 +16,7 @@ public class OrdersController {
 
 	private OrderService orderService;
 	
-	@GetMapping(value = "orders")
+	@GetMapping(value = "/orders")
 	public List<Orders> listOrders(){
 		return orderService.listAllOrders();
 	}
